@@ -8,23 +8,21 @@
                 <form action="{{ route('note.update', $note->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="form-group
-                    {{ $errors->has('title') ? 'has-error' : '' }}">
+                    <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ $note->title }}">
-                        @if ($errors->has('title'))
+                        @error('title')
                             <span class="help-block
-                            text-danger">{{ $errors->first('title') }}</span>
-                        @endif
+                            text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <div class="form-group
-                    {{ $errors->has('content') ? 'has-error' : '' }}">
+                    <div class="form-group">
                         <label for="content">Content</label>
                         <textarea class="form-control" id="content" name="content">{{ $note->content }}</textarea>
-                        @if ($errors->has('content'))
+                        @error('content')
                             <span class="help-block
-                            text-danger">{{ $errors->first('content') }}</span>
-                        @endif
+                            text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                     <button class="btn btn-secondary" onclick="window.location='{{ route('note.index') }}'">Back</button>

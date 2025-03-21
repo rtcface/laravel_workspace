@@ -11,19 +11,19 @@
                     {{ $errors->has('title') ? 'has-error' : '' }}">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
-                        @if ($errors->has('title'))
-                            <span class="help-block
-                            text-danger">{{ $errors->first('title') }}</span>
-                        @endif
+                        @error('title')
+                        <span class="help-block
+                            text-danger">{{ $message }}</span>                            
+                        @enderror
                     </div>
                     <div class="form-group
                     {{ $errors->has('content') ? 'has-error' : '' }}">
                         <label for="content">Content</label>
                         <textarea class="form-control" id="content" name="content">{{ old('content') }}</textarea>
-                        @if ($errors->has('content'))
+                       @error('content')
                             <span class="help-block
-                            text-danger">{{ $errors->first('content') }}</span>
-                        @endif
+                            text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
